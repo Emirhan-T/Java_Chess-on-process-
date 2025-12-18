@@ -16,36 +16,36 @@ public class pieces extends JLabel {
     ImageIcon queen_w = new ImageIcon("res/pieces/w_queen.png");
     ImageIcon queen_b = new ImageIcon("res/pieces/b_queen.png");
     public pieces(String piece, String color) {
-        if (piece.equals("pawn_w")) {
+        if (piece.equals("pawn_w")&&color.equals("white")) {
             this.setIcon(pawn_w);
-        } else if (piece.equals("pawn_b")) {
+        } else if (piece.equals("pawn_b")&&color.equals("black")) {
             this.setIcon(pawn_b);
         }
-        else if (piece.equals("bishop_w")) {
+        else if (piece.equals("bishop_w")&&color.equals("white")) {
             this.setIcon(bishop_w);
         }
-        else if (piece.equals("bishop_b")) {
+        else if (piece.equals("bishop_b")&&color.equals("black")) {
             this.setIcon(bishop_b);
         }
-        else if (piece.equals("knight_w")) {
+        else if (piece.equals("knight_w")&&color.equals("white")) {
             this.setIcon(knight_w);
         }
-        else if (piece.equals("knight_b")) {
+        else if (piece.equals("knight_b")&&color.equals("black")) {
             this.setIcon(knight_b);
         }
-        else if (piece.equals("rook_w")) {
+        else if (piece.equals("rook_w")&&color.equals("white")) {
             this.setIcon(rook_w);
         }
-        else if (piece.equals("rook_b")) {
+        else if (piece.equals("rook_b")&&color.equals("black")) {
             this.setIcon(rook_b);
         }
-        else if (piece.equals("king_w")) {
+        else if (piece.equals("king_w")&&color.equals("white")) {
             this.setIcon(king_w);
         }
-        else if (piece.equals("king_b")) {
+        else if (piece.equals("king_b")&&color.equals("black")) {
             this.setIcon(king_b);
         }
-        else if (piece.equals("queen_w")) {
+        else if (piece.equals("queen_w")&&color.equals("white")) {
             this.setIcon(queen_w);
         }
         else if (piece.equals("queen_b")) {

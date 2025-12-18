@@ -92,7 +92,7 @@ public class GamePanel extends JPanel {
         p.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
 
-                if(Select==false){
+                if(!Select){
                     if(p.getComponentCount() >0){
                         NextSelectedSquare = p;
                         oldColor = p.getBackground();
@@ -101,7 +101,7 @@ public class GamePanel extends JPanel {
                         OldSelectedSquare = p;
                     }
                 }
-                else if(Select==true){
+                else if(Select){
                     NextSelectedSquare = p;
                     if(OldSelectedSquare == NextSelectedSquare){
                         Select=false;
