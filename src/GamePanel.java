@@ -1,4 +1,4 @@
-import Pieces.pieces;
+import Pieces.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ public class GamePanel extends JPanel {
     JPanel NextSelectedSquare= null;
     JPanel OldSelectedSquare= null;
     Color oldColor=null;
-
+    int oldX,oldY;
     public GamePanel() {
         Table();
         Pieces();
@@ -23,43 +23,43 @@ public class GamePanel extends JPanel {
     }
     void Pieces(){
         for (int i = 0; i < 8; i++) {
-            loc[6][i].add(new pieces("pawn_w","white"));
-            loc[1][i].add(new pieces("pawn_b","black"));
+            loc[6][i].add(new Pawn("White"));
+            loc[1][i].add(new Pawn("Black"));
         }
         for (int i = 0; i < 8; i=i+7) {
             for (int j = 0; j < 8; j=j+7) {
                 if (j%2==0) {
-                    loc[j][i].add(new pieces("rook_b","black"));
+                    loc[j][i].add(new Rook("Black"));
                 }
                 else {
-                    loc[j][i].add(new pieces("rook_w","white"));
+                    loc[j][i].add(new Rook("White"));
                 }
             }
         }
         for (int i = 1; i < 8; i=i+5) {
             for (int j = 0; j < 8; j=j+7) {
                 if (j%2==0) {
-                    loc[j][i].add(new pieces("knight_b","black"));
+                    loc[j][i].add(new Knight("Black"));
                 }
                 else {
-                    loc[j][i].add(new pieces("knight_w","white"));
+                    loc[j][i].add(new Knight("White"));
                 }
             }
         }
         for (int i = 2; i < 8; i=i+3) {
             for (int j = 0; j < 8; j=j+7) {
                 if (j%2==0) {
-                    loc[j][i].add(new pieces("bishop_b","black"));
+                    loc[j][i].add(new Bishop("Black"));
                 }
                 else {
-                    loc[j][i].add(new pieces("bishop_w","white"));
+                    loc[j][i].add(new Bishop("White"));
                 }
             }
         }
-            loc[0][3].add(new pieces("queen_b","black"));
-            loc[7][3].add(new pieces("queen_w","white"));
-            loc[0][4].add(new pieces("king_b","black"));
-            loc[7][4].add(new pieces("king_w","white"));
+            loc[0][3].add(new Queen("Black"));
+            loc[7][3].add(new Queen("White"));
+            loc[0][4].add(new King("Black"));
+            loc[7][4].add(new King("White"));
     }
 
     void Table(){
@@ -80,7 +80,7 @@ public class GamePanel extends JPanel {
                     panel.setBackground(dark);
                     panel.setBounds(x_axis, y_axis, boxSize, boxSize);
                 }
-                mouseMovment(panel);
+                mouseMovment(panel, i , j);
                 loc[i][j] = panel;
                 x_axis = x_axis + boxSize;
                 this.add(panel);
@@ -88,7 +88,7 @@ public class GamePanel extends JPanel {
             y_axis = y_axis + boxSize;
         }
     }
-    void mouseMovment(JPanel p){
+    void mouseMovment(JPanel p, int i, int j) {
         p.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e) {
 
@@ -99,6 +99,8 @@ public class GamePanel extends JPanel {
                         p.setBackground(new Color(255, 144, 73));
                         Select=true;
                         OldSelectedSquare = p;
+                        oldX=i;
+                        oldY=j;
                     }
                 }
                 else if(Select){
@@ -108,7 +110,8 @@ public class GamePanel extends JPanel {
                         p.setBackground(oldColor);
                     }
                     else{
-                        Component piece =  OldSelectedSquare.getComponent(0);
+                        Pieces piece= (Pieces) OldSelectedSquare.getComponent(0);
+                        if(piece.isCanMove(oldX,oldY,i,j)==true){
                         p.removeAll();
                         p.add(piece);
                         OldSelectedSquare.setBackground(oldColor);
@@ -118,6 +121,9 @@ public class GamePanel extends JPanel {
                         NextSelectedSquare.revalidate();
                         p.repaint();
                         p.revalidate();
+                        }else{
+                            OldSelectedSquare.setBackground(oldColor);
+                        }
                         Select = false;
 
 
