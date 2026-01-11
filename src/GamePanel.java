@@ -94,7 +94,6 @@ public class GamePanel extends JPanel {
 
                 if(!Select){
                     if(p.getComponentCount() >0){
-                        NextSelectedSquare = p;
                         oldColor = p.getBackground();
                         p.setBackground(new Color(255, 144, 73));
                         Select=true;
@@ -111,7 +110,7 @@ public class GamePanel extends JPanel {
                     }
                     else{
                         Pieces piece= (Pieces) OldSelectedSquare.getComponent(0);
-                        if(piece.isCanMove(oldX,oldY,i,j)==true){
+                        if(piece.isCanMove(loc, oldX,oldY,i,j)==true){
                         p.removeAll();
                         p.add(piece);
                         OldSelectedSquare.setBackground(oldColor);

@@ -8,15 +8,25 @@ public class Rook extends Pieces {
         if (color.equals("Black")) {
             this.setIcon(new ImageIcon("res/pieces/b_rook.png"));
 
-        }
-        else {
+        } else {
             this.setIcon(new ImageIcon("res/pieces/w_rook.png"));
         }
     }
 
     @Override
-    public boolean isCanMove(int oldX, int oldY, int newX, int newY) {
-        if(oldX == newX || oldY== newY)return true;
+    public boolean isCanMove(JPanel[][] board, int oldX, int oldY, int newX, int newY) {
+        if (oldY == newY) {
+            for (int i = Math.min(oldX, newX) + 1; i < Math.max(oldX, newX); i++) {
+                if (board[i][newY].getComponentCount() > 0) return false;
+            }
+         return true;
+        }
+        if (oldX == newX) {
+            for (int i = Math.min(oldY, newY) + 1; i < Math.max(oldY, newY); i++) {
+                if (board[newX][i].getComponentCount() > 0) return false;
+            }
+         return true;
+        }
         return false;
     }
 }

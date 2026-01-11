@@ -9,5 +9,5 @@ public abstract class Pieces extends JLabel {
         this.setHorizontalAlignment(JLabel.CENTER);
     }
 
-    public abstract boolean isCanMove(int oldX, int oldY, int newX, int newY);
+    public abstract boolean isCanMove(JPanel[][] board, int oldX, int oldY, int newX, int newY);
 }
