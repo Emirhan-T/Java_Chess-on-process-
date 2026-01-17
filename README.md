@@ -89,7 +89,7 @@ Pawn Promotion: A dynamic selection window opens for pawns that reach the opposi
 
 This project is a standard Java project. After downloading the source code, you can compile and run it with any Java IDE (IntelliJ IDEA, Eclipse, etc.).
 
-To run the project, it is sufficient to run the main class. Ensure that the images are located in the project's main directory in the `res` folder for loading.
+To run the project, it is sufficient to run the main class. Ensure that the images are located in the project's main directory in the `res/ScreenShot1.png` folder for loading.
 
 Developer Notes
 
